@@ -66,7 +66,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <button onClick={createLotto}>
-          번호생성
+          추첨하기!!
         </button>
 
         <div className="container">
