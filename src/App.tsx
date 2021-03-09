@@ -50,9 +50,9 @@ function App() {
       }
     }
     
-    let bonus=(Math.floor(Math.random()*10)%45)+1
+    let bonus=(Math.floor(Math.random()*100)%45)+1
     while(result.includes(bonus)){
-      bonus=(Math.floor(Math.random()*10)%45)+1;
+      bonus=(Math.floor(Math.random()*100)%45)+1;
     }
 
     result.sort((a,b)=>a-b);
