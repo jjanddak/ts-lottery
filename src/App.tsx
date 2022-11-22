@@ -64,17 +64,27 @@ function App() {
   return (
     <div className="App" >
       <header className="App-header">
+        <div className="numbers-container">
+          <div><h4>로또</h4></div>
+          <div className="container">
+            <li>0, 0, 0, 0, 0, 0</li>
+            <li>0, 0, 0, 0, 0, 0</li>
+            <li>0, 0, 0, 0, 0, 0</li>
+            <li>0, 0, 0, 0, 0, 0</li>
+            <li>0, 0, 0, 0, 0, 0</li>
+          </div>
+          <div><h4>연금복권</h4></div>
+          <div className="yearContainer">
+            <li>0조 000000</li>
+          </div>
+        </div>
+
         <button
           id="btn"
           onClick={createLotto}
         >
           Pick Your Number
         </button>
-
-        <div><h4>로또</h4></div>
-        <div className="container"></div>
-        <div><h4>연금복권</h4></div>
-        <div className="yearContainer" ></div>
       </header >
     </div >
   );
