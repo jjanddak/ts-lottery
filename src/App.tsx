@@ -4,30 +4,36 @@ function App() {
   function createLotto() {
     function getPaper() {
 
-      const round = 5
       const paper: any = []
-      for (let i = 0; i < round; i++) {
+      for (let i = 0; i < 5; i++) {
         const getRan = (min: number, max: number) => {
           min = min === 0 ? 0 : 1
-          return (Math.floor(Math.random() * 10) % (max + 1 - min)) + min
+          return (Math.floor((Math.random() * 1000 + (new Date().valueOf() % 100))) % (max + 1 - min)) + min
         }
         const lottoNums: any = []
+        let digit = 0
         while (lottoNums.length < 6) {
-          let digit = getRan(0, 4)
-          digit = digit === 0 ? 0 : digit * 10
+          digit = digit >= 5 ? 0 : digit
+
+          let skipDigit = getRan(0, 100)
+          while (skipDigit <= 30) {
+            digit++
+            skipDigit = getRan(0, 100)
+            if (digit >= 5) digit = 0
+          }
+
           let duplicate = getRan(1, 2) // max <= 6개까지 남은 개수
           let round = 1
           while (round <= duplicate) {
-
-
-            const n = digit === 40 ? getRan(0, 5) : getRan(0, 9)
-            const num = digit + n
-            if (!lottoNums.includes(num)) {
-              lottoNums.push(num === 0 ? 1 : num)
+            const n = digit === 4 ? getRan(0, 5) : getRan(0, 9)
+            const pickedNum = digit * 10 + n
+            if (!lottoNums.includes(pickedNum)) {
+              lottoNums.push(pickedNum === 0 ? 1 : pickedNum)
               if (lottoNums.length + duplicate > 6) duplicate = 6 - lottoNums.length
               round++
             }
           }
+          digit++
         }
         lottoNums.sort((a: number, b: number) => a - b)
         paper.push(lottoNums)
@@ -36,7 +42,10 @@ function App() {
     }
 
     function getYearLottery() {
-      const n = Math.floor(Math.random() * 1000000)
+      let n = 0
+      while (n <= 100000) {
+        n = Math.floor(Math.random() * 100000000) % 1000000
+      }
       const round = Math.floor(Math.random() * 10 % 5) + 1
       return `${round}조 ${n}`
     }
