@@ -1,9 +1,15 @@
+import axios from 'axios'
 import "./App.css";
 
 function App() {
+  function getLastLottoWinNumber() {
+    console.info('getLastWinner')
+  }
+
+  getLastLottoWinNumber()
+
   function createLotto() {
     function getPaper() {
-
       const paper: any = []
       for (let i = 0; i < 5; i++) {
         const getRan = (min: number, max: number) => {
@@ -27,8 +33,8 @@ function App() {
           while (round <= duplicate) {
             const n = digit === 4 ? getRan(0, 5) : getRan(0, 9)
             const pickedNum = digit * 10 + n
-            if (!lottoNums.includes(pickedNum)) {
-              lottoNums.push(pickedNum === 0 ? 1 : pickedNum)
+            if (!lottoNums.includes(pickedNum) && pickedNum !== 0) {
+              lottoNums.push(pickedNum)
               if (lottoNums.length + duplicate > 6) duplicate = 6 - lottoNums.length
               round++
             }
@@ -70,10 +76,15 @@ function App() {
     yearContainer?.appendChild(yearLi)
   }
 
+
   return (
     <div className="App" >
       <header className="App-header">
         <div className="numbers-container">
+          {/* <div>
+            <h4>당첨번호</h4>
+          </div> */}
+
           <div><h4>로또</h4></div>
           <div className="container">
             <li>0, 0, 0, 0, 0, 0</li>
