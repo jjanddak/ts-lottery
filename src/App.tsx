@@ -120,9 +120,9 @@ function App() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <button onClick={increaseRound} style={{ marginTop: 0, marginBottom: '10px', fontSize: '30px', width: '60px' }}>&uarr;</button>
+          <button onClick={increaseRound} style={{ marginTop: 0, marginBottom: '10px', fontSize: '30px', width: '60px', textAlign: 'center' }}>&uarr;</button>
           <input id="roundInput" value={round} style={{ outline: 'none', border: 'none', fontSize: 'calc(10px + 7vmin)', width: '50px', height: '50px', background: 'transparent', color: 'white', textAlign: 'center' }}></input>
-          <button onClick={decreaseRound} style={{ margin: 0, marginTop: '10px', fontSize: '30px', width: '60px' }}>&darr;</button>
+          <button onClick={decreaseRound} style={{ margin: 0, marginTop: '10px', fontSize: '30px', width: '60px', textAlign: 'center' }}>&darr;</button>
         </div>
 
         <button
