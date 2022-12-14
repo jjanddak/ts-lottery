@@ -1,17 +1,32 @@
 import axios from 'axios'
 import "./App.css";
+import React, { useState } from 'react';
 
 function App() {
+  const [round, setRound] = useState(5)
+
+  function increaseRound() {
+    if (round === 5) return
+    else setRound(round + 1)
+  }
+
+  function decreaseRound() {
+    if (round === 1) return
+    else setRound(round - 1)
+  }
+
   function getLastLottoWinNumber() {
     console.info('getLastWinner')
   }
 
   getLastLottoWinNumber()
 
+  // let round: number = Number(document.querySelector('#inputRound')?.valueOf) || 5
+
   function createLotto() {
     function getPaper() {
       const paper: any = []
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < round; i++) {
         const getRan = (min: number, max: number) => {
           min = min === 0 ? 0 : 1
           return (Math.floor((Math.random() * 1000 + (new Date().valueOf() % 100))) % (max + 1 - min)) + min
@@ -85,6 +100,11 @@ function App() {
             <h4>당첨번호</h4>
           </div> */}
 
+          <p style={{ fontSize: '10px', left: '100px', textAlign: 'left' }}>
+            12/11 - 추첨알고리즘, 중복제거, 연금복권 6자리 고정 <br />
+            12/14 - 로또 추첨 횟수 추가, 공지 추가
+          </p>
+
           <div><h4>로또</h4></div>
           <div className="container">
             <li>0, 0, 0, 0, 0, 0</li>
@@ -99,8 +119,14 @@ function App() {
           </div>
         </div>
 
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <button onClick={increaseRound} style={{ marginTop: 0, marginBottom: '10px', fontSize: '30px', width: '60px' }}>&uarr;</button>
+          <input id="roundInput" value={round} style={{ outline: 'none', border: 'none', fontSize: 'calc(10px + 7vmin)', width: '50px', height: '50px', background: 'transparent', color: 'white', textAlign: 'center' }}></input>
+          <button onClick={decreaseRound} style={{ margin: 0, marginTop: '10px', fontSize: '30px', width: '60px' }}>&darr;</button>
+        </div>
+
         <button
-          id="btn"
+          style={{ margin: '10px' }}
           onClick={createLotto}
         >
           Pick Your Number
