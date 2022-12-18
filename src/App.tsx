@@ -36,14 +36,14 @@ function App() {
         while (lottoNums.length < 6) {
           digit = digit >= 5 ? 0 : digit
 
-          let skipDigit = getRan(0, 100)
-          while (skipDigit <= 30) {
-            digit++
-            skipDigit = getRan(0, 100)
-            if (digit >= 5) digit = 0
-          }
+          // let skipDigit = getRan(0, 100)
+          // while (skipDigit <= 30) {
+          //   digit++
+          //   skipDigit = getRan(0, 100)
+          //   if (digit >= 5) digit = 0
+          // }
 
-          let duplicate = getRan(1, 2) // max <= 6개까지 남은 개수
+          let duplicate = getRan(1, 2)
           let round = 1
           while (round <= duplicate) {
             const n = digit === 4 ? getRan(0, 5) : getRan(0, 9)
