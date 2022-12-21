@@ -1,4 +1,3 @@
-import axios from 'axios'
 import "./App.css";
 import React, { useState } from 'react';
 
@@ -43,15 +42,17 @@ function App() {
           //   if (digit >= 5) digit = 0
           // }
 
-          let duplicate = getRan(1, 2)
+          let duplicate = getRan(0, 2)
           let round = 1
-          while (round <= duplicate) {
-            const n = digit === 4 ? getRan(0, 5) : getRan(0, 9)
-            const pickedNum = digit * 10 + n
-            if (!lottoNums.includes(pickedNum) && pickedNum !== 0) {
-              lottoNums.push(pickedNum)
-              if (lottoNums.length + duplicate > 6) duplicate = 6 - lottoNums.length
-              round++
+          if (duplicate > 0) {
+            while (round <= duplicate) {
+              const n = digit === 4 ? getRan(0, 5) : getRan(0, 9)
+              const pickedNum = digit * 10 + n
+              if (!lottoNums.includes(pickedNum) && pickedNum !== 0) {
+                lottoNums.push(pickedNum)
+                if (lottoNums.length + duplicate > 6) duplicate = 6 - lottoNums.length
+                round++
+              }
             }
           }
           digit++
